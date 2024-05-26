@@ -1,0 +1,747 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8244177974769953"
+     crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+        }
+
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #151320;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative; /* Add position relative to create stacking context */
+        }
+
+        #logo {
+            font-size: 24px;
+        }
+
+        #menu-toggle {
+            cursor: pointer;
+            font-size: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #menu {
+            display: none;
+            position: absolute;
+            top: 50px; /* Adjust top position to make it align with the header */
+            right: 20px; /* Aligns menu to the right */
+            background-color: #1c1b29; /* Change background color */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+            z-index: 0;
+            animation: slideIn 0.5s ease forwards;
+            border: 2px solid transparent; /* Initial transparent border */
+        }
+
+        #menu.show {
+            display: block;
+            z-index: 1;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        #menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 5px 0;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateX(20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        #menu a:nth-child(1) { animation-delay: 0.1s; }
+        #menu a:nth-child(2) { animation-delay: 0.2s; }
+        #menu a:nth-child(3) { animation-delay: 0.3s; }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Rainbow border effect */
+        #menu.show {
+            animation: slideIn 0.5s ease forwards;
+            border-image: conic-gradient(
+                #fd004c,
+                #fe9000,
+                #fff020,
+                #3edf4b,
+                #3363ff,
+                #b102b7,
+                #fd004c
+            ) 1; /* Use conic-gradient as border image */
+            border-image-slice: 1; /* Set border image slice */
+            animation: rainbowBorder 5s linear infinite; /* Add animation for color change */
+        }
+
+        @keyframes rainbowBorder {
+            0% {
+                border-width: 2px; /* Initial border width */
+                border-style: solid; /* Use solid border style */
+            }
+            100% {
+                border-width: 10px; /* Increase border width */
+            }
+        }
+        /* Rainbow border effect end */
+  
+        section {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            position: relative;
+            transition: filter 0.5s ease-in-out;
+        }
+  
+        section.active {
+            filter: blur(5px) brightness(0.7);
+        }
+  
+        #main {
+            background-image: url("https://i.ibb.co/YpghWbz/bgMAIN.png");
+        }
+  
+        #about {
+            background-image: url("https://i.ibb.co/crRcLYK/bgABOUT.png");
+        }
+  
+        #skills {
+            background-image: url("https://i.ibb.co/v305VqG/bgSKILLS.png");
+        }
+  
+        #works {
+            background-image: url("https://i.ibb.co/pybR0xC/bgWORKS.png");
+        }
+  
+        #comments {
+            background-image: url("https://i.ibb.co/55DRxxV/bg-COMMENTS.png");
+        }
+  
+        .main-block,
+        .about-block,
+        .skills-block,
+        .works-block,
+        .comments-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+  
+        .main-block {
+            flex-direction: column;
+            height: 100vh;
+        }
+  
+        .main-content {
+            background-image: url("https://i.ibb.co/Jnn3JFc/form1.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 849px;
+            height: 223px;
+            padding-left: 30px;
+        }
+  
+        .main-title {
+            padding-top: 67px;
+            color: #2B2D35;
+            font-size: 80px;
+        }
+  
+        .main-subtitle {
+            color: #2B2D35;
+            font-size: 20px;
+            font-family: "Comfortaa";
+        }
+  
+        .button {
+            width: 200px;
+            height: 60px;
+            border-radius: 100px;
+            border: 2px solid #000;
+            background: #bbff2c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 5px 5px 0 #000000;
+            margin-top: 20px;
+            transition-duration: 0.3s;
+        }
+  
+        .button a {
+            font-size: 20px;
+            text-decoration: none;
+        }
+  
+        .button:hover {
+            background: #a0d826;
+        }
+  
+        @keyframes my-custom-animation {
+            0% {
+                transform: rotate(0deg) translate(0, 0);
+                background-color: red;
+            }
+            25% {
+                transform: rotate(360deg) translate(25%, 0);
+                background-color: orange;
+            }
+            50% {
+                transform: rotate(720deg) translate(50%, 50%);
+                background-color: yellow;
+            }
+            75% {
+                transform: rotate(1080deg) translate(25%, 100%);
+                background-color: green;
+            }
+            100% {
+                transform: rotate(1440deg) translate(0, 0);
+                background-color: blue;
+            }
+        }
+  
+        .triangle-container {
+            position: absolute;
+            left: 50px; /* Adjust the left position as needed */
+            top: calc(50% - 50px); /* Center vertically */
+            animation: my-custom-animation 5s infinite linear;
+            transition: all 0.3s ease; /* Added transition for smooth hover effect */
+            cursor: pointer;
+        }
+  
+        .triangle-container:hover .triangle {
+            transform: scale(0.8); /* Scale down on hover */
+            opacity: 1; /* Make it visible */
+        }
+  
+        .triangle-container:not(:hover) .triangle {
+            transition: all 2s ease; /* Gradual return to original size */
+            transform: scale(1);
+            opacity: 0; /* Make it invisible */
+        }
+  
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid red; /* Initial color */
+            opacity: 0; /* Initially invisible */
+        }
+  
+        /* New styles for the Windows window */
+        .windows-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+  
+        .windows-overlay.active {
+            display: block;
+        }
+  
+        .windows-window {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 300px;
+            background-image: url("https://i.ibb.co/form2.png");
+            background-size: cover;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+        }
+  
+        .windows-window.active {
+            display: block;
+        }
+  
+        .windows-window.fullscreen {
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+        }
+  
+        .windows-window-header {
+            height: 30px;
+            background: #f1f1f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            cursor: move;
+        }
+  
+        .windows-window-buttons {
+            display: flex;
+            gap: 5px;
+        }
+  
+        .windows-window-button {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+  
+        .windows-window-button.red { background: #ff5f52; }
+        .windows-window-button.yellow { background: #ffc845; }
+        .windows-window-button.green { background: #4cd964; }
+  
+        .iframe-container {
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+  
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+  
+        
+        body {
+            cursor: none; /* Hide the default cursor */
+        }
+  
+        #alien-pointer {
+            position: fixed;
+            font-size: 24px;
+            z-index: 9999;
+            display: none; /* Initially hide the emoji cursor */
+        }
+  
+        .moving-planet{
+            background: url(moving-planet.png);
+            background-repeat: no-repeat;
+            width: 200px;
+            height: 360px;
+            transform: rotate(-15deg);
+            position: absolute;
+            bottom: 5px;
+            right: 30px;
+  
+        }
+  
+        @keyframes planet-move {
+            from{transform: translateY(0px);}
+            to{transform: translateY(90px);}
+        }
+  
+        .moving-planet, .moving-planet2{
+            animation-name: planet-move;
+            animation-duration: 3.19s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+  
+        .moving-planet2{
+            background: url(https://i.ibb.co/nkVWCSf/moving-planet.png);
+            background-repeat: no-repeat;
+            width: 208px;
+            height: 200px;
+            position: absolute;
+            bottom: 70px;
+            left: 0;
+        }
+  
+  footer{
+    background-color: #200153;
+    height: 110px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #FFF;
+  }
+  
+  .footer-info p{
+    font-family: 'Comfortaa';
+    padding-bottom: 10px;
+  }
+  
+  .footer-year p{
+    font-family: 'Comfortaa';
+    letter-spacing: 1.5px;
+  }
+  
+  .footer-links a{
+    margin-right: 15px;
+  }
+
+  
+  
+    </style>
+
+        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+        <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(function(OneSignal) {
+            OneSignal.init({
+            appId: "4d88cd04-196d-44ea-8c18-85b7969c2a57",
+            });
+        });
+        </script>
+
+  <script defer="" data-domain="andrei.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8244177974769953"
+     crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <div id="header">
+        <div id="logo">⚙️</div> <!-- Logo or website name -->
+        <div id="menu-toggle">&#9776;</div> <!-- Hamburger menu icon -->
+        <div id="menu" class="hidden">
+            <!-- Menu items -->
+            <a href="#">Donate</a>
+            <a href="#">Code</a>
+            <a href="#">Self destruct</a>
+        </div>
+    </div>
+
+    <div id="content">
+        <!-- Main content of your website -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
+
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('show');
+            });
+
+            // Add event listeners to menu items
+            const menuItems = document.querySelectorAll('#menu a');
+            menuItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    // Redirect to URL
+                    // You can use item.href to get the URL of the clicked item
+                    console.log('Redirecting to:', item.href);
+                    // Uncomment the line below to redirect
+                    // window.location.href = item.href;
+                });
+            });
+        });
+    </script>
+
+  
+    <section id="main">
+        <div class="main-block">
+            <img src="https://i.ibb.co/rMCZSXZ/maskot.png" width="125">
+            <div class="main-content">
+                <h1 class="main-title">Andrei Zheravin</h1>
+                <p class="main-subtitle">personal page of the publisher</p>
+            </div>
+            <div class="button">
+                <a href="https://getafilenow.com/1645619">More about us</a>
+            </div>
+        </div>
+        <div class="moving-planet"></div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var button = document.querySelector('.button');
+        
+            button.addEventListener('click', function() {
+                window.location.href = 'https://getafilenow.com/1645619'; // Replace 'your-destination-url' with the URL you want to redirect to
+            });
+        });
+        </script>
+    </section>
+  
+    <section id="about">
+        <div class="about-block">
+            <!-- Banner 468x60 -->
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '89fe15c206f19852faa7363e7070d1bd',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+                document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/89fe15c206f19852faa7363e7070d1bd/invoke.js"></scr' + 'ipt>');
+            </script>
+        </div>
+    </section>
+  
+    <section id="skills">
+        <div class="skills-block">
+            <!-- Banner 300x250 -->
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '2b70a4285e8da7a4cd1bf84cd3987cb6',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+                document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/2b70a4285e8da7a4cd1bf84cd3987cb6/invoke.js"></scr' + 'ipt>');
+            </script>
+        </div>
+    </section>
+  
+    <section id="works">
+        <div class="works-block">
+            <!-- Banner 728x90 -->
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '986b8d1424ac6c2c08ce4b3d17ab44d6',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+                document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/986b8d1424ac6c2c08ce4b3d17ab44d6/invoke.js"></scr' + 'ipt>');
+            </script>
+        </div>
+    </section>
+  
+    <section id="comments">
+        <div class="comments-block">
+            <!-- Native Banner -->
+            <script async="async" data-cfasync="false" src="https://pl22476246.profitablegatecpm.com/cd4cdfa7bed268c22585c652e01eceb9/invoke.js"></script>
+            <div id="container-cd4cdfa7bed268c22585c652e01eceb9"></div>
+        </div>
+    </section>
+  
+    <div class="triangle-container" onclick="toggleWindowsWindow()">
+        <div class="triangle"></div>
+    </div>
+  
+    <!-- Background overlay for Windows window -->
+    <div class="windows-overlay" id="windowsOverlay"></div>
+  
+    <!-- Windows window HTML -->
+    <div class="windows-window" id="windowsWindow">
+        <div class="windows-window-header">
+            <div class="windows-window-buttons">
+                <div class="windows-window-button red" onclick="deleteWindowsWindow()"> </div>
+                <div class="windows-window-button yellow" onclick="swirlAwayWindows()"> </div>
+                <div class="windows-window-button green" onclick="toggleFullscreen()"> </div>
+            </div>
+        </div>
+        <div class="iframe-container" id="iframeContainer">
+            <iframe src="https://win11.blueedge.me/" frameborder="0"></iframe>
+        </div>
+    </div>
+  
+    <div id="alien-pointer" style="position: fixed; pointer-events: none;">🛸</div>
+  
+  <script>
+   // Function to show the hyperlink container
+  function showHyperlinkContainer() {
+    var hyperlinkContainer = document.getElementById('hyperlinkContainer');
+    hyperlinkContainer.style.display = 'block';
+  }
+  
+  // Function to hide the hyperlink container
+  function hideHyperlinkContainer() {
+    var hyperlinkContainer = document.getElementById('hyperlinkContainer');
+    hyperlinkContainer.style.display = 'none';
+  }
+  
+  // Functions for Windows window actions
+  function toggleWindowsWindow() {
+    const windowsOverlay = document.getElementById('windowsOverlay');
+    const windowsWindow = document.getElementById('windowsWindow');
+    const sections = document.querySelectorAll('section');
+    const iframeContainer = document.getElementById('iframeContainer');
+  
+    windowsOverlay.classList.toggle('active');
+    windowsWindow.classList.toggle('active');
+    sections.forEach(section => section.classList.toggle('active'));
+    document.body.classList.toggle('active');
+    
+    if (windowsWindow.classList.contains('active')) {
+        iframeContainer.style.display = 'block';
+        showHyperlinkContainer(); // Show the hyperlink container when the window is opened
+    } else {
+        iframeContainer.style.display = 'none';
+        hideHyperlinkContainer(); // Hide the hyperlink container when the window is closed
+    }
+  }
+  
+  function deleteWindowsWindow() {
+    const windowsOverlay = document.getElementById('windowsOverlay');
+    const windowsWindow = document.getElementById('windowsWindow');
+    const sections = document.querySelectorAll('section');
+    const iframeContainer = document.getElementById('iframeContainer');
+  
+    windowsOverlay.classList.remove('active');
+    windowsWindow.classList.remove('active');
+    sections.forEach(section => section.classList.remove('active'));
+    document.body.classList.remove('active');
+    iframeContainer.style.display = 'none';
+    hideHyperlinkContainer(); // Hide the hyperlink container when the window is closed
+  }
+  
+  function swirlAwayWindows() {
+    const windowsOverlay = document.getElementById('windowsOverlay');
+    const windowsWindow = document.getElementById('windowsWindow');
+    const sections = document.querySelectorAll('section');
+    const iframeContainer = document.getElementById('iframeContainer');
+  
+    windowsOverlay.style.animation = 'swirlAwayWindows 1s';
+    setTimeout(() => {
+        windowsOverlay.classList.remove('active');
+        windowsWindow.classList.remove('active');
+        sections.forEach(section => section.classList.remove('active'));
+        document.body.classList.remove('active');
+        iframeContainer.style.display = 'none';
+        windowsOverlay.style.animation = '';
+        hideHyperlinkContainer(); // Hide the hyperlink container when the window is closed
+    }, 1000);
+  }
+  
+  function toggleFullscreen() {
+    const windowsWindow = document.getElementById('windowsWindow');
+    windowsWindow.classList.toggle('fullscreen');
+    if (windowsWindow.classList.contains('fullscreen')) {
+        hideHyperlinkContainer(); // Hide the hyperlink container when entering full screen
+    } else {
+        // Check if the window is open
+        if (windowsWindow.classList.contains('active')) {
+            showHyperlinkContainer(); // Show the hyperlink container if the window is open
+        }
+    }
+  }
+  
+    </script>
+  
+    <!-- AdBlock popup -->
+    <div id="adBlockPopup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #ffffff; padding: 20px; border-radius: 10px; z-index: 9999; display: none;">
+        <p style="font-size: 18px; color: #000000; text-align: center;">Our website is made possible by displaying online advertisements to our visitors. Please consider supporting us by disabling your ad blocker.</p>
+    </div>
+  
+    <div id="alien-pointer">🛸</div>
+  
+    <script>
+        const alienPointer = document.getElementById('alien-pointer');
+  
+        document.addEventListener('mousemove', (e) => {
+            const windowsWindow = document.getElementById('windowsWindow');
+            const isForm2Active = windowsWindow.classList.contains('active');
+  
+            if (!isForm2Active) {
+                alienPointer.style.display = 'block';
+                alienPointer.style.left = e.clientX + 'px';
+                alienPointer.style.top = e.clientY + 'px';
+            } else {
+                alienPointer.style.display = 'none';
+            }
+        });
+    </script>
+  
+  <script type="text/javascript"> var infolinks_pid = 3415659; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+  
+  
+  <div class="hyperlink-container" id="hyperlinkContainer" style="display: none; position: fixed; top: calc(50% + 190px); left: 50%; transform: translate(-50%, -50%); z-index: 1001;">
+    <a href="https://andrei-pro.tiiny.site" target="_blank" style="color: #ffffff; text-decoration: underline;">Do you want a real free functional virtual browser online?</a>
+  </div>
+  
+  <script>
+    function toggleWindowsWindow() {
+        const windowsOverlay = document.getElementById('windowsOverlay');
+        const windowsWindow = document.getElementById('windowsWindow');
+        const sections = document.querySelectorAll('section');
+        const iframeContainer = document.getElementById('iframeContainer');
+        const hyperlinkContainer = document.getElementById('hyperlinkContainer');
+  
+        windowsOverlay.classList.toggle('active');
+        windowsWindow.classList.toggle('active');
+        sections.forEach(section => section.classList.toggle('active'));
+        document.body.classList.toggle('active');
+  
+        if (windowsWindow.classList.contains('active')) {
+            iframeContainer.style.display = 'block';
+            hyperlinkContainer.style.display = 'block';
+        } else {
+            iframeContainer.style.display = 'none';
+            hyperlinkContainer.style.display = 'none';
+        }
+    }
+  </script>
+  
+  
+<footer>
+    <iframe src="https://andrei-live-now.tiiny.site/" style="border: none; width: 100%; height: 1500px; overflow: hidden;"></iframe>
+    <script>
+        // Wait for the iframe content to load
+        document.getElementById('myIframe').addEventListener('load', function() {
+            // Access the iframe content
+            var iframeContent = document.getElementById('myIframe').contentDocument || document.getElementById('myIframe').contentWindow.document;
+            // Find and remove the banner element
+            var banner = iframeContent.querySelector('div[style*="padding: 10px"][style*="background"]');
+            if (banner) {
+                banner.remove();
+            }
+        });
+    </script>
+</footer>
+
+
+
+
+
+
+
+  
+  </body>
+  </html>
